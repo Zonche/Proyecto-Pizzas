@@ -22,9 +22,11 @@ CREATE TABLE IF NOT EXISTS `t_ingredientes` (
   `NOMBRE` text NOT NULL,
   `CANTIDAD` int(11) NOT NULL,
   `TIPO_UNIDAD` tinytext NOT NULL,
+  `COSTO` float unsigned NOT NULL,
   `FECHA_CADUCIDAD` date NOT NULL,
   `FECHA_ENTRADA` date NOT NULL,
   `FOTO` text NOT NULL,
+  `ESTADO` bit(1) NOT NULL,
   PRIMARY KEY (`ID_INGREDIENTE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='TABLA PARA LOS INGREDIENTES';
 
@@ -40,14 +42,16 @@ CREATE TABLE IF NOT EXISTS `t_productos` (
   `EXISTENCIA` int(11) NOT NULL DEFAULT 0,
   `FECHA_CADUCIDAD` date NOT NULL,
   `FECHA_ENTRADA` date NOT NULL,
+  `PRECIO` float unsigned NOT NULL,
   `FOTO` text NOT NULL,
+  `ESTADO` bit(1) NOT NULL,
   PRIMARY KEY (`ID_PRODUCTOS`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla para los productos como el caso de bebidas, platillos, etc.';
 
 -- Volcando datos para la tabla pizzas.t_productos: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `t_productos` DISABLE KEYS */;
-INSERT INTO `t_productos` (`ID_PRODUCTOS`, `CATEGORIA`, `NOMBRE`, `EXISTENCIA`, `FECHA_CADUCIDAD`, `FECHA_ENTRADA`, `FOTO`) VALUES
-	(1, 'Platillo', 'coca', 10, '2018-03-07', '2018-03-07', '');
+INSERT INTO `t_productos` (`ID_PRODUCTOS`, `CATEGORIA`, `NOMBRE`, `EXISTENCIA`, `FECHA_CADUCIDAD`, `FECHA_ENTRADA`, `PRECIO`, `FOTO`, `ESTADO`) VALUES
+	(1, 'Platillo', 'coca', 10, '2018-03-07', '2018-03-07', 0, '', b'0');
 /*!40000 ALTER TABLE `t_productos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla pizzas.t_usuarios
@@ -65,7 +69,8 @@ INSERT INTO `t_usuarios` (`ID_USUARIO`, `NOMBRE`, `PASSWORD`, `TIPO`) VALUES
 	(3, 'Danii', 'advl123', 1),
 	(4, 'any', '123', 0),
 	(6, 'da', '987', 1),
-	(7, 'dani', 'advl123', 0);
+	(7, 'dani', 'advl123', 0),
+	(8, 'alex', 'iloveRinda', 1);
 /*!40000 ALTER TABLE `t_usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
